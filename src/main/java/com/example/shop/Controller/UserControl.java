@@ -12,18 +12,22 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*") // Allow requests from React frontend
+@CrossOrigin(origins = "*")
 public class UserControl {
 
     @Autowired
     private UserRepository userRepository;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody User user) {
 
-        // Check for duplicates
+        if (user.getUsername() == null || user.getEmail() == null
+                || user.getPassword() == null || user.getPhoneno() == null) {
+            return ResponseEntity.badRequest().body("All fields are required");
+        }
+
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             return ResponseEntity.badRequest().body("Username already exists");
         }
@@ -40,13 +44,13 @@ public class UserControl {
 
         return ResponseEntity.ok(savedUser);
     }
-    @GetMapping
-    public String test() {
-        return "Signup working!";
-    }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+
+        if (loginRequest.getUsername() == null || loginRequest.getPassword() == null) {
+            return ResponseEntity.badRequest().body("Username and password required");
+        }
 
         Optional<User> userOpt = userRepository.findByUsername(loginRequest.getUsername());
 
@@ -59,6 +63,12 @@ public class UserControl {
         if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
             return ResponseEntity.badRequest().body("Invalid Username or Password");
         }
+
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Signup working!";
     }
 }
