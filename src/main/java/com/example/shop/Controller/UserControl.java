@@ -41,7 +41,7 @@ public class UserControl {
         return ResponseEntity.ok(savedUser);
     }
     @GetMapping
-    public String signup() {
+    public String test() {
         return "Signup working!";
     }
 
