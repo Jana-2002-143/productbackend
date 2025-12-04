@@ -40,10 +40,9 @@ public class UserControl {
 
         return ResponseEntity.ok(savedUser);
     }
-
-    @GetMapping("/test")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("GET method works!");
+    @GetMapping
+    public String signup() {
+        return "Signup working!";
     }
 
     @PostMapping("/login")
