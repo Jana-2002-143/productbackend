@@ -19,13 +19,22 @@ public class Order {
     private String itemName;
 
     @Column(nullable = false, unique = false)
-    private String price;
+    private int totalPrice;
 
     @Column(nullable = false, unique = false)
     private String image;
 
     @Column(nullable = false, unique = false)
     private String debited;
+
+    @Column(nullable = false, unique = false)
+    private String date;
+
+    @Column(nullable = false, unique = false)
+    private int quantity;
+
+    @Column(nullable = false, unique = false)
+    private int price;
 
     public Order() {
     }
@@ -38,12 +47,40 @@ public class Order {
         this.id = id;
     }
 
-    public String getPrice() {
+    public String date() {
+        return date;
+    }
+
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public String getItemName() {

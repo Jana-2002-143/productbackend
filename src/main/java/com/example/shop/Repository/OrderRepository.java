@@ -13,9 +13,13 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     List<Order> findByBuyerEmail(String buyerEmail);
 
+    List<Order> findByQuantity(Integer quantity);
+
+    List<Order> findByDate(String date);
+
     List<Order> findByItemName(String itemName);
 
-    List<Order> findByPrice(String price);
+    List<Order> findByTotalPrice(Integer totalPrice);
 
     List<Order> findByImage(String image);
 
