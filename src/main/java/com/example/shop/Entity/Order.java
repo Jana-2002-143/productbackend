@@ -2,9 +2,6 @@ package com.example.shop.Entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -29,9 +26,8 @@ public class Order {
     @Column(nullable = false, unique = false)
     private String debited;
 
-    @Column(nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime date;
+    @Column(nullable = false, unique = false)
+    private String date;
 
 
     @Column(nullable = false, unique = false)
@@ -51,37 +47,23 @@ public class Order {
         this.id = id;
     }
 
-    public String getPrice() {
-        return price;
-    }
+    public String getPrice() {return price;}
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
+    public void setPrice(String price) {this.price = price;}
 
-    public LocalDateTime getDate() {
-        return date;
-    }
+    public String getDate() {return date;}
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
+    public void setDate(String date) {this.date = date;}
 
-    public String getQuantity() {
-        return quantity;
-    }
+    public String getQuantity() {return quantity;}
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
+    public void setQuantity(String quantity) {this.quantity = quantity;}
 
     public String getItemName() {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
+    public void setItemName(String itemName) {this.itemName = itemName;}
 
     public String getBuyerName() {
         return buyerName;
