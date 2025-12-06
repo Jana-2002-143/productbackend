@@ -10,6 +10,12 @@ public class Order {
     private Long id;
 
     @Column(nullable = false, unique = false)
+    private String buyername;
+
+    @Column(nullable = false, unique = false)
+    private String buyeremail;
+
+    @Column(nullable = false, unique = false)
     private String itemName;
 
     @Column(nullable = false, unique = false)
@@ -46,6 +52,22 @@ public class Order {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getBuyername() {
+        return buyername;
+    }
+
+    public void setBuyername(String buyername) {
+        this.buyername = buyername;
+    }
+
+    public String getBuyeremail() {
+        return buyeremail;
+    }
+
+    public void setBuyeremail(String buyeremail) {
+        this.buyeremail = buyeremail;
     }
 
     public String getDebited() {
