@@ -19,8 +19,6 @@ public class OrderControl {
     // SAVE ORDER
     @PostMapping("/order")
     public ResponseEntity<?> order(@RequestBody Order order){
-        int total = order.getPrice() * order.getQuantity();
-        order.setTotalPrice(total);
         Order savedOrder = orderRepository.save(order);
         return ResponseEntity.ok(savedOrder);
     }
