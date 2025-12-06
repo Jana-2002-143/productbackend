@@ -20,7 +20,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     List<Order> findByItemName(String itemName);
 
-    List<Order> findByTotalPrice(String totalPrice);
+    List<Order> findByPrice(String price);
 
     List<Order> findByImage(String image);
 
