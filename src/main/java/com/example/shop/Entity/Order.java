@@ -10,10 +10,10 @@ public class Order {
     private Long id;
 
     @Column(nullable = false, unique = false)
-    private String buyername;
+    private String buyerName;
 
     @Column(nullable = false, unique = false)
-    private String buyeremail;
+    private String buyerEmail;
 
     @Column(nullable = false, unique = false)
     private String itemName;
@@ -54,20 +54,20 @@ public class Order {
         this.itemName = itemName;
     }
 
-    public String getBuyername() {
-        return buyername;
+    public String getBuyerName() {
+        return buyerName;
     }
 
-    public void setBuyername(String buyername) {
-        this.buyername = buyername;
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
     }
 
-    public String getBuyeremail() {
-        return buyeremail;
+    public String getBuyerEmail() {
+        return buyerEmail;
     }
 
-    public void setBuyeremail(String buyeremail) {
-        this.buyeremail = buyeremail;
+    public void setBuyerEmail(String buyerEmail) {
+        this.buyerEmail = buyerEmail;
     }
 
     public String getDebited() {

@@ -4,15 +4,20 @@ import com.example.shop.Entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order,Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    Optional<Order> findByItemBuyerName(String buyername);
-    Optional<Order> findByItemBuyerEmail(String buyeremail);
-    Optional<Order> findByItemName(String itemName);
-    Optional<Order> findByPrice(String price);
-    Optional<Order> findByImage(String image);
-    Optional<Order> findByDebited(String debited);
+    List<Order> findByBuyerName(String buyerName);
+
+    List<Order> findByBuyerEmail(String buyerEmail);
+
+    List<Order> findByItemName(String itemName);
+
+    List<Order> findByPrice(String price);
+
+    List<Order> findByImage(String image);
+
+    List<Order> findByDebited(String debited);
 }

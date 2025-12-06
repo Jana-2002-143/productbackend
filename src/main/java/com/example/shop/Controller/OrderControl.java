@@ -5,6 +5,7 @@ import com.example.shop.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -12,16 +13,25 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class OrderControl {
 
-@Autowired
-    public OrderRepository orderRepository;
+    @Autowired
+    private OrderRepository orderRepository;
+
+    // SAVE ORDER
     @PostMapping("/order")
     public ResponseEntity<?> order(@RequestBody Order order){
         Order savedOrder = orderRepository.save(order);
-        return ResponseEntity.ok("SuccessFull You Are Purchased");
+        return ResponseEntity.ok(savedOrder);
     }
+
     @GetMapping("/history")
     public ResponseEntity<List<Order>> getAllHistory() {
         List<Order> history = orderRepository.findAll();
         return ResponseEntity.ok(history);
+    }
+
+    @GetMapping("/history/{email}")
+    public ResponseEntity<List<Order>> getUserHistory(@PathVariable String email) {
+        List<Order> userOrders = orderRepository.findByBuyerEmail(email);
+        return ResponseEntity.ok(userOrders);
     }
 }
