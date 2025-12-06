@@ -23,13 +23,7 @@ public class OrderControl {
         return ResponseEntity.ok(savedOrder);
     }
 
-    @GetMapping("/history")
-    public ResponseEntity<List<Order>> getAllHistory() {
-        List<Order> history = orderRepository.findAll();
-        return ResponseEntity.ok(history);
-    }
-
-    @GetMapping("/history/{email}")
+    @GetMapping("/history/{buyerEmail}")
     public ResponseEntity<List<Order>> getUserHistory(@PathVariable String email) {
         List<Order> userOrders = orderRepository.findByBuyerEmail(email);
         return ResponseEntity.ok(userOrders);
