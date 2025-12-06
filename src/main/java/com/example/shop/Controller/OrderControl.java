@@ -24,5 +24,4 @@ public class OrderControl {
         List<Order> history = orderRepository.findAll();
         return ResponseEntity.ok(history);
     }
-
 }
