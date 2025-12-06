@@ -23,9 +23,9 @@ public class OrderControl {
         return ResponseEntity.ok(savedOrder);
     }
 
-    @GetMapping("/history/{buyerEmail}")
-    public ResponseEntity<List<Order>> getUserHistory(@PathVariable String email) {
-        List<Order> userOrders = orderRepository.findByBuyerEmail(email);
+    @GetMapping("/history/{buyerName}")
+    public ResponseEntity<List<Order>> getUserHistory(@PathVariable String buyerName) {
+        List<Order> userOrders = orderRepository.findByBuyerName(buyerName);
         return ResponseEntity.ok(userOrders);
     }
 }
